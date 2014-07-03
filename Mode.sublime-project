@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"export",
+				"assets"
+			],
+			"path": "/Users/chasedelanguillette/Documents/development/haxe/projects/Mode"
+		},
+		{
+			"path": "/usr/lib/haxe/lib/flixel/3,3,4"
+		}
+	]
+}
