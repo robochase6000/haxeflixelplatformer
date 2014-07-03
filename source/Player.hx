@@ -59,7 +59,7 @@ class Player extends FlxSprite
 	 * would be near duplicates of the Enemy class, so if you're confused at all
 	 * I'd recommend checking that out for some ideas!
 	 */
-	public function new(X:Int, Y:Int, Bullets:FlxTypedGroup<Bullet>, Gibs:FlxEmitter)
+	public function new<T:Bullet>(X:Int, Y:Int, Bullets:FlxTypedGroup<Bullet>, Gibs:FlxEmitter)
 	{
 		super(X, Y);
 		
@@ -432,7 +432,7 @@ class Player extends FlxSprite
 		else
 		{
 			getMidpoint(_point);
-			_bullets.recycle(Bullet).shoot(_point, _aim);
+			_bullets.recycle(Grenade).shoot(_point, _aim);
 			
 			if (_aim == FlxObject.DOWN)
 			{

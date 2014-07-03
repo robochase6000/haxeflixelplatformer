@@ -43,9 +43,21 @@ class Bullet extends FlxSprite
 		}
 		else if (touching != 0)
 		{
-			kill();
+			handleCollision();
 		}
 
+		updateLifetime();
+
+		super.update();
+	}
+
+	private function handleCollision():Void
+	{
+		kill();
+	}
+
+	private function updateLifetime():Void
+	{
 		if (_lifetime > 0.0)
 		{
 			_timeAlive += FlxG.elapsed;
@@ -54,8 +66,12 @@ class Bullet extends FlxSprite
 				kill();
 			}
 		}
+	}
 
-		super.update();
+	public function hitWall():Void
+	{
+		trace("bullet hit wall");
+		kill();
 	}
 	
 	override public function kill():Void

@@ -488,7 +488,14 @@ class PlayState extends FlxState
 	{
 		if (Std.is(Sprite1, EnemyBullet) || Std.is(Sprite1, Bullet))
 		{
-			Sprite1.kill();
+			if (Std.is(Sprite2, FlxTilemap ))
+			{
+				cast(Sprite1,Bullet).hitWall();
+			}
+			else
+			{
+				Sprite1.kill();
+			}
 		}
 		
 		Sprite2.hurt(1);
