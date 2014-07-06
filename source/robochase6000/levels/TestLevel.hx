@@ -1,34 +1,15 @@
-package robochase6000;
+package robochase6000.levels;
 
-class Level
+import flixel.util.FlxPoint;
+
+class TestLevel extends Level
 {
-	// generates a 2d collision map with walls on the outside (1's)
-	public static function cleanMap(width:Int, height:Int):Array<Array<Int>>
+	override public function spawnPoint():FlxPoint
 	{
-		var output:Array<Array<Int>> = [];
-
-		for (i in 0...height)
-		{
-			output.push([]);
-			for (j in 0...width)
-			{
-				var tile:Int = 0;
-				if (i == 0 || j == 0 || i == height-1 || j == width-1) tile = 1;
-				output[i].push(tile);
-			}
-		}
-
-		return output;
+		return new FlxPoint(30.0, 345.0);
 	}
 
-	private var _layout:Array<Array<Int>> = [];
-
-	public function new()
-	{
-
-	}
-
-	public function getCollisionMap():Array<Array<Int>>
+	override public function getCollisionMap():Array<Array<Int>>
 	{
 		var layout:Array<Array<Int>> = [
 			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -82,7 +63,7 @@ class Level
 			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 		];
-
 		return layout;
 	}
 }
+

@@ -8,6 +8,7 @@ import flixel.group.FlxTypedGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.input.gamepad.XboxButtonID;
 import flixel.ui.FlxButton;
+import flixel.util.FlxPoint;
 import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxTimer;
 #if (android && OUYA)
@@ -59,9 +60,9 @@ class Player extends FlxSprite
 	 * would be near duplicates of the Enemy class, so if you're confused at all
 	 * I'd recommend checking that out for some ideas!
 	 */
-	public function new<T:Bullet>(X:Int, Y:Int, Bullets:FlxTypedGroup<Bullet>, Gibs:FlxEmitter)
+	public function new<T:Bullet>(startingPoint:FlxPoint, Bullets:FlxTypedGroup<Bullet>, Gibs:FlxEmitter)
 	{
-		super(X, Y);
+		super(startingPoint.x, startingPoint.y);
 		
 		loadGraphic(Reg.SPACEMAN, true, 8);
 		

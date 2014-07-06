@@ -19,7 +19,8 @@ import flixel.util.FlxRandom;
 import flixel.util.FlxSpriteUtil;
 import flixel.util.FlxStringUtil;
 
-import robochase6000.Level;
+import robochase6000.levels.Level;
+import robochase6000.levels.TestLevel;
 import robochase6000.VirtualControl;
 
 #if (cpp || neko)
@@ -146,15 +147,17 @@ class PlayState extends FlxState
 		_bullets = new FlxTypedGroup<Bullet>();
 		_bullets.maxSize = 20;
 		
+		var level:Level = new Level();
+
 		// Now that we have references to the bullets and metal bits,
 		// we can create the player object.
-		_player = new Player(30, 345, _bullets, _littleGibs);
+		_player = new Player(level.spawnPoint(), _bullets, _littleGibs);
 		
 		// This refers to a custom function down at the bottom of the file
 		// that creates all our level geometry with a total size of 640x480.
 		// This in turn calls buildRoom() a bunch of times, which in turn
 		// is responsible for adding the spawners and spawn-cameras.
-		generateLevel(new Level());
+		generateLevel(level);
 		
 		// Add bots and spawners after we add blocks to the state,
 		// so that they're drawn on top of the level, and so that
@@ -292,7 +295,7 @@ class PlayState extends FlxState
 		FlxG.watch.add(_player, "y");
 		FlxG.watch.add(_player, "jumpPower");
 		FlxG.watch.add(_player, "maxVelocity");
-		//FlxG.watch.add(FlxG.camera, "zoom");
+		FlxG.watch.add(FlxG.camera, "zoom");
 		FlxG.watch.add(_enemies, "length", "numEnemies");
 		FlxG.watch.add(_enemyBullets, "length", "numEnemyBullets");
 		FlxG.watch.add(FlxG.sound.list, "length", "numSounds");
